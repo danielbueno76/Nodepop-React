@@ -2,6 +2,7 @@ import React from "react";
 import T from "prop-types";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { LoginPage, PrivateRoute } from "./components/auth";
+import { AdvertsPage } from "./components/adverts";
 import { AuthContextProvider } from "./components/auth/context";
 
 function App({ isInitiallyLogged }) {
@@ -31,7 +32,12 @@ function App({ isInitiallyLogged }) {
           <Route path="/login">
             <LoginPage />
           </Route>
-          <Route exact path="/"></Route>
+          <PrivateRoute path="/adverts">
+            <AdvertsPage />
+          </PrivateRoute>
+          <PrivateRoute exact path="/">
+            <Redirect to="/adverts" />
+          </PrivateRoute>
           <Route path="/404">
             <div
               style={{
