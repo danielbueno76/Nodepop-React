@@ -17,11 +17,8 @@ const EmptyList = () => (
 const AdvertsPage = ({ className, ...props }) => {
   const [adverts, setAdverts] = React.useState([]);
   React.useEffect(() => {
-    console.log(adverts);
-
     getLatestAdverts().then(setAdverts);
-    console.log(adverts);
-  }, []);
+  }, [adverts]);
 
   return (
     <Layout title="List of advertisements" {...props}>
