@@ -2,16 +2,11 @@ import React from "react";
 import T from "prop-types";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { LoginPage, PrivateRoute } from "./components/auth";
-import { AdvertsPage } from "./components/adverts";
+import { AdvertsPage, AdvertPage } from "./components/adverts";
 import { AuthContextProvider } from "./components/auth/context";
 
 function App({ isInitiallyLogged }) {
   const [isLogged, setIsLogged] = React.useState(isInitiallyLogged);
-  // const ref = React.useRef(null);
-
-  // React.useEffect(() => {
-  //   console.log(ref.current);
-  // }, []);
 
   const handleLogin = () => {
     setIsLogged(true);
@@ -32,6 +27,9 @@ function App({ isInitiallyLogged }) {
           <Route path="/login">
             <LoginPage />
           </Route>
+          <PrivateRoute path="/adverts/:advertId">
+            {(routeProps) => <AdvertPage {...routeProps} />}
+          </PrivateRoute>
           <PrivateRoute path="/adverts">
             <AdvertsPage />
           </PrivateRoute>

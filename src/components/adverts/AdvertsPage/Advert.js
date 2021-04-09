@@ -1,31 +1,22 @@
 import React from "react";
 import T from "prop-types";
-import Photo from "../../shared/Photo";
 import { Link } from "react-router-dom";
+import messageSale from "../../../utils/message";
 
 const Advert = ({ id, createdAt, name, sale, price, tags, photo }) => {
-  let messageSale = "";
-  if (sale) {
-    messageSale = "This product is available for sale.";
-  } else {
-    messageSale = "I am looking for this product.";
-  }
-
   return (
     <div className="card">
-      <Link to={`/ad.html?id=${id}`}>
+      <Link to={`/adverts/${id}`}>
         <div className="card-content">
           <div className="content">
             <p>Title: {name}</p>
             <p>Price: {price}</p>
-            <p>{messageSale}</p>
+            <p>{messageSale(sale)}</p>
             <p>Tags: {tags.map((tag) => tag + ", ")}</p>
             <time dateTime={createdAt}>{createdAt}</time>
           </div>
         </div>
-        <Photo src={photo} />
       </Link>
-      <button className="button is-danger">Delete</button>
     </div>
   );
 };
