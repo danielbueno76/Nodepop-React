@@ -6,8 +6,6 @@ import FormField from "../../shared/FormField";
 import Checkbox from "../../shared/Checkbox";
 import useForm from "../../../hooks/useForm";
 
-import "./LoginForm.css";
-
 function LoginForm({ onSubmit, isLoading }) {
   const [credentials, handleChange, handleSubmit] = useForm({
     email: "",
@@ -31,7 +29,6 @@ function LoginForm({ onSubmit, isLoading }) {
         type="text"
         name="email"
         label="email"
-        className="loginForm-field"
         value={email}
         onChange={handleChange}
         autofocus
@@ -41,14 +38,13 @@ function LoginForm({ onSubmit, isLoading }) {
         type="password"
         name="password"
         label="password"
-        className="loginForm-field"
         value={password}
         onChange={handleChange}
       />
       <Checkbox name="remember" label="remember" onChange={handleChecked} />
+
       <Button
         type="submit"
-        className="loginForm-submit"
         variant="primary"
         disabled={isLoading || !email || !password}
       >

@@ -1,31 +1,27 @@
 import React from "react";
-import { Link } from "react-router-dom";
-// import { getLatestTweets } from "../../../api/tweets";
+import { getLatestAdverts } from "../../../api/adverts";
 import Layout from "../../layout/Layout";
-// import TweetsList from "./TweetsList";
+import AdvertsList from "./AdvertsList";
 import { Button } from "../../shared";
 
 const EmptyList = () => (
   <div style={{ textAlign: "center" }}>
     <p>Be the first ad!</p>
-    <Button as={Link} to="/tweet" variant="primary">
-      Create ad
-    </Button>
+    <Button href="/new-advert">Create ad</Button>
   </div>
 );
 
 const AdvertsPage = ({ className, ...props }) => {
-  //   const [tweets, setTweets] = React.useState([]);
+  const [adverts, setAdverts] = React.useState([]);
 
-  //   React.useEffect(() => {
-  //     getLatestTweets().then(setTweets);
-  //   }, []);
+  React.useEffect(() => {
+    getLatestAdverts().then(setAdverts);
+  }, []);
 
   return (
     <Layout title="List of advertisements" {...props}>
       <div className={className}>
-        {/* {tweets.length ? <TweetsList tweets={tweets} /> : <EmptyList />} */}
-        <EmptyList />
+        {adverts.length ? <AdvertsList adverts={adverts} /> : <EmptyList />}
       </div>
     </Layout>
   );

@@ -1,8 +1,9 @@
 import React from "react";
 import classNames from "classnames";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { ReactComponent as Icon } from "../../images/Logo.svg";
 import AuthButton from "../auth/AuthButton";
+import Button from "../shared/Button";
 import "./Header.css";
 
 const Header = ({ className, ...props }) => {
@@ -14,6 +15,15 @@ const Header = ({ className, ...props }) => {
         </div>
       </Link>
       <nav className="header-nav">
+        <Button
+          as={NavLink}
+          activeClassName="active"
+          to="/new-ad"
+          variant="primary"
+          className="header-button"
+        >
+          Create ad
+        </Button>
         <AuthButton className="header-button" />
       </nav>
     </header>

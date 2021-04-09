@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 import "./index.css";
 import App from "./App";
-
+import "bulma/css/bulma.min.css";
 import storage from "./utils/storage";
 import { configureClient } from "./api/client";
 

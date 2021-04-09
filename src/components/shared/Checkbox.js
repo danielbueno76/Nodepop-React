@@ -2,7 +2,7 @@ import React from "react";
 
 function Checkbox({ ...props }) {
   return (
-    <label>
+    <label className="checkbox">
       <input type="checkbox" {...props} />
       Remember me
     </label>
