@@ -21,9 +21,18 @@ const AdvertsFormFilter = ({ onSubmit }) => {
   };
 
   const handleChange = (ev) => {
+    let valueEvent = ev.target.value;
+
+    if (ev.target.selectedOptions) {
+      // select component
+      valueEvent = Array.from(
+        ev.target.selectedOptions,
+        (option) => option.value
+      );
+    }
     setAdvertFilter((oldValue) => ({
       ...oldValue,
-      [ev.target.name]: ev.target.value,
+      [ev.target.name]: valueEvent,
     }));
   };
 
