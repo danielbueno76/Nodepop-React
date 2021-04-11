@@ -18,7 +18,7 @@ const Header = ({ className, ...props }) => {
         <Button
           as={NavLink}
           activeClassName="active"
-          to="/new-advert"
+          to="/advert/new"
           variant="primary"
           className="header-button"
         >

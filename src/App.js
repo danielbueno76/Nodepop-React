@@ -2,7 +2,7 @@ import React from "react";
 import T from "prop-types";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { LoginPage, PrivateRoute } from "./components/auth";
-import { AdvertsPage, AdvertPage } from "./components/adverts";
+import { AdvertsPage, AdvertPage, NewAdvertPage } from "./components/adverts";
 import { AuthContextProvider } from "./components/auth/context";
 
 function App({ isInitiallyLogged }) {
@@ -27,7 +27,10 @@ function App({ isInitiallyLogged }) {
           <Route path="/login">
             <LoginPage />
           </Route>
-          <PrivateRoute path="/adverts/:advertId">
+          <PrivateRoute exact path="/advert/new">
+            <NewAdvertPage />
+          </PrivateRoute>
+          <PrivateRoute path="/advert/:advertId">
             {(routeProps) => <AdvertPage {...routeProps} />}
           </PrivateRoute>
           <PrivateRoute path="/adverts">

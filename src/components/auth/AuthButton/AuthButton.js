@@ -1,8 +1,8 @@
-import T from 'prop-types';
-import { Link } from 'react-router-dom';
-import { Button } from '../../shared';
-import { logout } from '../../../api/auth';
-import { AuthContextConsumer } from '../context';
+import T from "prop-types";
+import { Link } from "react-router-dom";
+import { Button } from "../../shared";
+import { logout } from "../../../api/auth";
+import { AuthContextConsumer } from "../context";
 
 const AuthButton = ({ className, isLogged, onLogout }) => {
   const handleLogoutClick = () => {
@@ -10,11 +10,11 @@ const AuthButton = ({ className, isLogged, onLogout }) => {
   };
 
   const props = isLogged
-    ? { onClick: handleLogoutClick, children: 'Log out' }
+    ? { onClick: handleLogoutClick, children: "Log out" }
     : {
         as: Link,
-        to: '/login',
-        children: 'Log in',
+        to: "/login",
+        children: "Log in",
       };
 
   return <Button className={className} {...props} />;
@@ -30,10 +30,10 @@ AuthButton.defaultProps = {
   isLogged: false,
 };
 
-const ConnectedAuthButton = props => {
+const ConnectedAuthButton = (props) => {
   return (
     <AuthContextConsumer>
-      {value => {
+      {(value) => {
         return (
           <AuthButton
             isLogged={value.isLogged}

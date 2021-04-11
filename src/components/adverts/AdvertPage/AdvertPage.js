@@ -2,7 +2,7 @@ import React from "react";
 import Layout from "../../layout/Layout";
 import { getAdvertDetail, deleteAdvert } from "../../../api/adverts";
 import { Redirect } from "react-router";
-import messageSale from "../../../utils/message";
+import { messageSale } from "../../../utils/utils";
 import Photo from "../../shared/Photo";
 import DeleteButton from "../../shared/DeleteButton";
 
@@ -31,7 +31,7 @@ const AdvertPage = ({ match, ...props }) => {
   };
 
   if (adHasBeenDeleted) {
-    window.location.href = "/";
+    window.location.href = "/adverts";
   }
 
   const { name, price, sale, tags, photo, createdAt } = advert;

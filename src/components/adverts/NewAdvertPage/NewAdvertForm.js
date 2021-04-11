@@ -1,0 +1,66 @@
+import React from "react";
+import useForm from "../../../hooks/useForm";
+import { Button, FormField, Radio, Select } from "../../shared";
+import { BUY, SELL } from "../../../utils/utils";
+import { getAdvertsTags } from "../../../api/adverts";
+
+const NewAdvertForm = ({ onSubmit }) => {
+  const [advert, handleChange, handleSubmit] = useForm({});
+  const [allTags, setAllTags] = React.useState([]);
+  const inputRef = React.useRef(null);
+
+  React.useEffect(() => {
+    getAdvertsTags().then(setAllTags);
+  }, []);
+
+  const afterPreventDefault = (ev) => {
+    onSubmit(advert);
+  };
+
+  const { name, price, sale, tags } = advert;
+
+  return (
+    <form onSubmit={handleSubmit(afterPreventDefault)}>
+      <FormField
+        type="text"
+        name="name"
+        label="Name"
+        value={name}
+        placeholder="Name"
+        onChange={handleChange}
+        autofocus
+      />
+      <FormField
+        type="number"
+        name="price"
+        label="Price"
+        value={price}
+        onChange={handleChange}
+      />
+      <Radio name="sale" arrayValues={[BUY, SELL]} onChange={handleChange} />
+      <Select
+        name="tags"
+        value={tags}
+        allTags={allTags}
+        onChange={handleChange}
+      />
+      <FormField
+        type="file"
+        name="photo"
+        label="Photo"
+        accept="image/*"
+        ref={inputRef}
+        onChange={handleChange}
+      />
+      <Button
+        type="submit"
+        variant="primary"
+        disabled={!name || !price || !sale || !tags}
+      >
+        Publish
+      </Button>
+    </form>
+  );
+};
+
+export default NewAdvertForm;

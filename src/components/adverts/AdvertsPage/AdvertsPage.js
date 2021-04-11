@@ -8,7 +8,7 @@ import { Button } from "../../shared";
 const EmptyList = () => (
   <div style={{ textAlign: "center" }}>
     <p>Be the first ad!</p>
-    <Button as={Link} to="/new-advert" variant="primary">
+    <Button as={Link} to="/advert/new" variant="primary">
       Create ad
     </Button>
   </div>

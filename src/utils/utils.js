@@ -1,4 +1,4 @@
-const messageSale = (sale) => {
+export const messageSale = (sale) => {
   let message = "";
   if (sale) {
     message = "This product is available for sale.";
@@ -8,4 +8,5 @@ const messageSale = (sale) => {
   return message;
 };
 
-export default messageSale;
+export const BUY = "Buy";
+export const SELL = "Sell";
