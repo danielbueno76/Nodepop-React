@@ -5,7 +5,7 @@ import { messageSale } from "../../../utils/utils";
 
 const Advert = ({ id, createdAt, name, sale, price, tags, ...props }) => {
   return (
-    <div as={Link} key={id} className="card" to={`/advert/${id}`}>
+    <div as={Link} className="card" to={`/advert/${id}`}>
       <div className="card-content">
         <div className="content">
           <p>Title: {name}</p>
