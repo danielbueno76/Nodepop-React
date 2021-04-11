@@ -6,11 +6,13 @@ const useForm = (initialValue) => {
   const handleChange = (event) => {
     let valueEvent = event.target.value;
     if (event.target.selectedOptions) {
+      // select component
       valueEvent = Array.from(
         event.target.selectedOptions,
         (option) => option.value
       );
     } else if (event.target.files) {
+      //input type file
       valueEvent = event.target.files[0];
     }
     setValue((oldValue) => ({

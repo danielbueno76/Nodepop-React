@@ -1,26 +1,25 @@
 import React from "react";
 import useForm from "../../../hooks/useForm";
 import { Button, FormField, Radio, Select } from "../../shared";
-import { BUY, SELL } from "../../../utils/utils";
+import { BUY, SELL, MAX, MIN } from "../../../utils/utils";
 import { getAdvertsTags } from "../../../api/adverts";
 
 const NewAdvertForm = ({ onSubmit }) => {
   const [advert, handleChange, handleSubmit] = useForm({});
   const [allTags, setAllTags] = React.useState([]);
-  const inputRef = React.useRef(null);
 
   React.useEffect(() => {
     getAdvertsTags().then(setAllTags);
   }, []);
 
-  const afterPreventDefault = (ev) => {
+  const handleFormSubmit = () => {
     onSubmit(advert);
   };
 
   const { name, price, sale, tags } = advert;
 
   return (
-    <form onSubmit={handleSubmit(afterPreventDefault)}>
+    <form onSubmit={handleSubmit(handleFormSubmit)}>
       <FormField
         type="text"
         name="name"
@@ -32,6 +31,8 @@ const NewAdvertForm = ({ onSubmit }) => {
       />
       <FormField
         type="number"
+        max={MAX}
+        min={MIN}
         name="price"
         label="Price"
         value={price}
@@ -49,7 +50,6 @@ const NewAdvertForm = ({ onSubmit }) => {
         name="photo"
         label="Photo"
         accept="image/*"
-        ref={inputRef}
         onChange={handleChange}
       />
       <Button

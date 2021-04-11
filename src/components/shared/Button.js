@@ -9,6 +9,7 @@ const Button = styled.button`
   border-radius: 9999px;
   border-style: solid;
   border-width: 3px;
+  margin-left: 20px;
   color: ${(props) => (props.variant === "primary" ? "white" : accentColor)};
   cursor: pointer;
   display: inline-flex;

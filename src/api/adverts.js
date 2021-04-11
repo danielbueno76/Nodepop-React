@@ -2,8 +2,8 @@ import client from "./client";
 
 const advertsBaseUrl = "/api/v1";
 
-export const getLatestAdverts = () => {
-  const url = `${advertsBaseUrl}/adverts`;
+export const getLatestAdverts = (query = "") => {
+  const url = `${advertsBaseUrl}/adverts${query}`;
   return client.get(url);
 };
 

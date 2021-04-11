@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { getLatestAdverts } from "../../../api/adverts";
 import Layout from "../../layout/Layout";
 import AdvertsList from "./AdvertsList";
+import AdvertsFormFilter from "./AdvertsFormFilter";
 import { Button } from "../../shared";
 
 const EmptyList = () => (
@@ -16,15 +17,38 @@ const EmptyList = () => (
 
 const AdvertsPage = ({ className, ...props }) => {
   const [adverts, setAdverts] = React.useState([]);
+
   React.useEffect(() => {
     getLatestAdverts().then(setAdverts);
-  }, [adverts]);
+  }, []);
+
+  const handleSubmit = (advertFilter) => {
+    const queryArray = [];
+    for (const key in advertFilter) {
+      if (Array.isArray(advertFilter[key])) {
+        advertFilter[key].forEach((elem) => queryArray.push(`${key}=${elem}`));
+      } else {
+        if (advertFilter[key]) {
+          queryArray.push(`${key}=${advertFilter[key]}`);
+        }
+      }
+    }
+    const query = `?${queryArray.join("&")}`;
+    getLatestAdverts(query).then(setAdverts);
+  };
 
   return (
     <Layout title="List of advertisements" {...props}>
-      <div className={className}>
-        {adverts.length ? <AdvertsList adverts={adverts} /> : <EmptyList />}
-      </div>
+      {adverts.length ? (
+        <div className={className}>
+          <AdvertsFormFilter onSubmit={handleSubmit} />
+          <AdvertsList adverts={adverts} />
+        </div>
+      ) : (
+        <div className={className}>
+          <EmptyList />
+        </div>
+      )}
     </Layout>
   );
 };

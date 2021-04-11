@@ -5,3 +5,4 @@ export { default as Photo } from "./Photo";
 export { default as DeleteButton } from "./DeleteButton";
 export { default as Radio } from "./Radio";
 export { default as Select } from "./Select";
+export { default as Slider } from "./Slider";

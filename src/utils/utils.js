@@ -8,5 +8,7 @@ export const messageSale = (sale) => {
   return message;
 };
 
+export const MIN = 0;
+export const MAX = 1000000;
 export const BUY = "Buy";
 export const SELL = "Sell";

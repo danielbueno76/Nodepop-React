@@ -5,7 +5,7 @@ const Radio = ({ arrayValues, ...props }) => {
     <div className="control">
       {arrayValues.map((children) => {
         return (
-          <label className="radio">
+          <label key={children} className="radio">
             <input
               type="radio"
               name="sale"
