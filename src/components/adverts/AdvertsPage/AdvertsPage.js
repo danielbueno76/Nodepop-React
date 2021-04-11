@@ -5,6 +5,7 @@ import Layout from "../../layout/Layout";
 import AdvertsList from "./AdvertsList";
 import AdvertsFormFilter from "./AdvertsFormFilter";
 import { Button } from "../../shared";
+import storage from "../../../utils/storage";
 
 const EmptyList = () => (
   <div style={{ textAlign: "center" }}>
@@ -19,7 +20,10 @@ const AdvertsPage = ({ className, ...props }) => {
   const [adverts, setAdverts] = React.useState([]);
 
   React.useEffect(() => {
-    getLatestAdverts().then(setAdverts);
+    const filter = storage.get("filter");
+    const query = filter ? filter : "";
+
+    getLatestAdverts(query).then(setAdverts);
   }, []);
 
   const handleSubmit = (advertFilter) => {
@@ -34,6 +38,7 @@ const AdvertsPage = ({ className, ...props }) => {
       }
     }
     const query = `?${queryArray.join("&")}`;
+    storage.set("filter", query);
     getLatestAdverts(query).then(setAdverts);
   };
 

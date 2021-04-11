@@ -66,6 +66,7 @@ Funcionalidad de cada página-componente:
     - Filtro compra/venta (input tipo radio ‘venta’, ‘compra’, ‘todos’)
     - Filtro por precio (input donde podremos seleccionar el rango de precios por el que queremos filtrar).
     - Filtro por tags (input donde podremos seleccionar uno o varios tags de los disponibles). El filtro incluirá todos los tags seleccionados.
+    - La aplicación recuerda las preferencias de filtrado del usuario, de modo que cada vez que se entre en esta ruta estuviesen ya marcados los últimos filtros aplicados y con ellos se realizase la petición al API. Estas preferencias permanecen guardadas por el navegador.
 
   - **El filtrado de anuncios:**
     - Recoger los filtros a aplicar en el front y enviarlos a la petición al API para traer los anuncios ya filtrados desde el backend (una petición cada vez que se apliquen los filtros).
@@ -83,7 +84,7 @@ Funcionalidad de cada página-componente:
     - Foto
   - Todos los campos, excepto la foto serán requeridos para crear un anuncio. Manejar estas validaciones con React, por ejemplo desabiltando el submit hasta pasar todas las validaciones.
   - Tras la creación del anuncio debería redireccionar a la página del anuncio.
-- Además de estos componentes necesitaremos un componente visible cuando el usuario esté logeado desde el que podamos hacer **logout** (un botón por ejemlo, a poder ser posible con confirmación).
+- Además de estos componentes necesitaremos un componente visible cuando el usuario esté logeado desde el que podamos hacer **logout** con confirmación.
   • Las rutas de **/adverts** y **/advert/new** deben de estar accesibles fácilmente mediante enlaces de navegación (Link o NavLink).
 
 ## Otras cosas
