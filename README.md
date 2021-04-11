@@ -85,7 +85,7 @@ Funcionalidad de cada página-componente:
   - Todos los campos, excepto la foto serán requeridos para crear un anuncio. Manejar estas validaciones con React, por ejemplo desabiltando el submit hasta pasar todas las validaciones.
   - Tras la creación del anuncio debería redireccionar a la página del anuncio.
 - Además de estos componentes necesitaremos un componente visible cuando el usuario esté logeado desde el que podamos hacer **logout** con confirmación.
-  - Las rutas de **/adverts** y **/advert/new** deben de estar accesibles fácilmente mediante enlaces de navegación (Link o NavLink).
+- Las rutas de **/adverts** y **/advert/new** deben de estar accesibles fácilmente mediante enlaces de navegación (Link o NavLink).
 
 ## Otras cosas
 
