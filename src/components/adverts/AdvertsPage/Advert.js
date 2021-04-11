@@ -1,11 +1,18 @@
 import React from "react";
 import T from "prop-types";
-import { Link } from "react-router-dom";
 import { messageSale } from "../../../utils/utils";
 
-const Advert = ({ id, createdAt, name, sale, price, tags, ...props }) => {
+const styleArticle = {
+  borderStyle: "solid",
+  borderWidth: 10,
+  marginLeft: 20,
+  marginRigth: 20,
+  marginTop: 20,
+};
+
+const Advert = ({ createdAt, name, sale, price, tags }) => {
   return (
-    <div as={Link} className="card" to={`/advert/${id}`}>
+    <div style={styleArticle} className="card">
       <div className="card-content">
         <div className="content">
           <p>Title: {name}</p>

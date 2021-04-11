@@ -39,16 +39,10 @@ const AdvertsPage = ({ className, ...props }) => {
 
   return (
     <Layout title="List of advertisements" {...props}>
-      {adverts.length ? (
-        <div className={className}>
-          <AdvertsFormFilter onSubmit={handleSubmit} />
-          <AdvertsList adverts={adverts} />
-        </div>
-      ) : (
-        <div className={className}>
-          <EmptyList />
-        </div>
-      )}
+      <div className={className}>
+        <AdvertsFormFilter onSubmit={handleSubmit} />
+        {adverts.length ? <AdvertsList adverts={adverts} /> : <EmptyList />}
+      </div>
     </Layout>
   );
 };

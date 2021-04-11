@@ -4,6 +4,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import { LoginPage, PrivateRoute } from "./components/auth";
 import { AdvertsPage, AdvertPage, NewAdvertPage } from "./components/adverts";
 import { AuthContextProvider } from "./components/auth/context";
+import { NotFoundPage } from "./components/notFound";
 
 function App({ isInitiallyLogged }) {
   const [isLogged, setIsLogged] = React.useState(isInitiallyLogged);
@@ -40,15 +41,7 @@ function App({ isInitiallyLogged }) {
             <Redirect to="/adverts" />
           </PrivateRoute>
           <Route path="/404">
-            <div
-              style={{
-                textAlign: "center",
-                fontSize: 48,
-                fontWeight: "bold",
-              }}
-            >
-              404 | Not found page
-            </div>
+            <NotFoundPage />
           </Route>
           <Route>
             <Redirect to="/404" />

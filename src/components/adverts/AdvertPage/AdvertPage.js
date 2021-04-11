@@ -36,7 +36,7 @@ const AdvertPage = ({ match, ...props }) => {
 
   const { name, price, sale, tags, photo, createdAt } = advert;
   return (
-    <Layout title="Advert Detail" {...props}>
+    <Layout title="Advertisement Detail" {...props}>
       <div className="card">
         <div className="card-content">
           <div className="content">
