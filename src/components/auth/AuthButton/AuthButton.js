@@ -6,7 +6,10 @@ import { AuthContextConsumer } from "../context";
 
 const AuthButton = ({ className, isLogged, onLogout }) => {
   const handleLogoutClick = () => {
-    logout().then(onLogout);
+    const logOutConfirmed = window.confirm("Are you sure you want to log out?");
+    if (logOutConfirmed) {
+      logout().then(onLogout);
+    }
   };
 
   const props = isLogged
