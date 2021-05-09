@@ -26,7 +26,7 @@ const AdvertPage = ({ match, ...props }) => {
   };
 
   if (adHasBeenDeleted) {
-    window.location.href = "/adverts";
+    return <Redirect to="/adverts" />;
   }
 
   const { name, price, sale, tags, photo, createdAt } = advert;
