@@ -6,6 +6,7 @@ import AdvertsList from "./AdvertsList";
 import AdvertsFormFilter from "./AdvertsFormFilter";
 import { Button } from "../../shared";
 import storage from "../../../utils/storage";
+import { SELL } from "../../../utils/utils";
 
 const EmptyList = () => (
   <div style={{ textAlign: "center" }}>
@@ -28,13 +29,16 @@ const AdvertsPage = ({ className, ...props }) => {
 
   const handleSubmit = (advertFilter) => {
     const queryArray = [];
+
+    if (advertFilter["sale"]) {
+      advertFilter["sale"] = advertFilter["sale"] === SELL; // convert to boolean
+    }
+
     for (const key in advertFilter) {
       if (Array.isArray(advertFilter[key])) {
         advertFilter[key].forEach((elem) => queryArray.push(`${key}=${elem}`));
       } else {
-        if (advertFilter[key]) {
-          queryArray.push(`${key}=${advertFilter[key]}`);
-        }
+        queryArray.push(`${key}=${advertFilter[key]}`);
       }
     }
     const query = `?${queryArray.join("&")}`;

@@ -38,7 +38,12 @@ const NewAdvertForm = ({ onSubmit }) => {
         value={price}
         onChange={handleChange}
       />
-      <Radio name="sale" arrayValues={[BUY, SELL]} onChange={handleChange} />
+      <Radio
+        name="sale"
+        value={sale}
+        arrayValues={[BUY, SELL]}
+        onChange={handleChange}
+      />
       <Select
         name="tags"
         value={tags}

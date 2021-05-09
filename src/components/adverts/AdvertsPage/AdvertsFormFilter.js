@@ -65,7 +65,7 @@ const AdvertsFormFilter = ({ onSubmit }) => {
     });
   };
 
-  const { name, price, tags } = advertFilter;
+  const { name, price, sale, tags } = advertFilter;
   return (
     <div className="box">
       <form onSubmit={handleFormSubmit}>
@@ -88,7 +88,12 @@ const AdvertsFormFilter = ({ onSubmit }) => {
           onChangeMin={handleSliderMin}
           onChangeMax={handleSliderMax}
         />
-        <Radio name="sale" arrayValues={[BUY, SELL]} onChange={handleChange} />
+        <Radio
+          name="sale"
+          value={sale}
+          arrayValues={[BUY, SELL]}
+          onChange={handleChange}
+        />
         <Select
           label="Tags"
           name="tags"

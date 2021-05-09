@@ -1,18 +1,17 @@
-import { SELL } from "../../utils/utils";
-
-const Radio = ({ arrayValues, ...props }) => {
+const Radio = ({ arrayValues, value, ...props }) => {
   return (
     <div className="control">
-      {arrayValues.map((children) => {
+      {arrayValues.map((optionValue) => {
         return (
-          <label key={children} className="radio">
+          <label key={optionValue} className="radio">
             <input
               type="radio"
               name="sale"
-              value={children === SELL}
+              value={optionValue}
+              checked={optionValue === value}
               {...props}
             />
-            {children}
+            {optionValue}
           </label>
         );
       })}
