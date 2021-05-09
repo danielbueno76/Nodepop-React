@@ -4,7 +4,7 @@ import { getAdvertDetail, deleteAdvert } from "../../../api/adverts";
 import { Redirect } from "react-router";
 import { messageSale } from "../../../utils/utils";
 import Photo from "../../shared/Photo";
-import DeleteButton from "../../shared/DeleteButton";
+import ConfirmButton from "../../shared/ConfirmButton";
 
 const AdvertPage = ({ match, ...props }) => {
   const [advert, setAdverts] = React.useState({});
@@ -20,14 +20,9 @@ const AdvertPage = ({ match, ...props }) => {
   }
 
   const handleDeleteAdvert = () => {
-    const deleteConfirmed = window.confirm(
-      "Are you sure you want to delete the ad?"
-    );
-    if (deleteConfirmed) {
-      deleteAdvert(match.params.advertId)
-        .then(setAdHasBeenDeleted(true))
-        .catch(setError);
-    }
+    deleteAdvert(match.params.advertId)
+      .then(setAdHasBeenDeleted(true))
+      .catch(setError);
   };
 
   if (adHasBeenDeleted) {
@@ -48,7 +43,12 @@ const AdvertPage = ({ match, ...props }) => {
           </div>
         </div>
         <Photo src={photo} alt={name} />
-        <DeleteButton onClick={handleDeleteAdvert}>Delete</DeleteButton>
+        <ConfirmButton
+          messageConfirm={"Are you sure you want to delete the ad?"}
+          handleToDo={handleDeleteAdvert}
+        >
+          Delete
+        </ConfirmButton>
       </div>
     </Layout>
   );

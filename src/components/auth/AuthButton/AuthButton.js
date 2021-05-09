@@ -1,15 +1,12 @@
 import T from "prop-types";
 import { Link } from "react-router-dom";
-import { Button } from "../../shared";
+import { ConfirmButton } from "../../shared";
 import { logout } from "../../../api/auth";
 import { AuthContextConsumer } from "../context";
 
 const AuthButton = ({ className, isLogged, onLogout }) => {
   const handleLogoutClick = () => {
-    const logOutConfirmed = window.confirm("Are you sure you want to log out?");
-    if (logOutConfirmed) {
-      logout().then(onLogout);
-    }
+    logout().then(onLogout);
   };
 
   const props = isLogged
@@ -20,7 +17,14 @@ const AuthButton = ({ className, isLogged, onLogout }) => {
         children: "Log in",
       };
 
-  return <Button className={className} {...props} />;
+  return (
+    <ConfirmButton
+      className={className}
+      messageConfirm={"Are you sure you want to log out?"}
+      handleToDo={handleLogoutClick}
+      {...props}
+    />
+  );
 };
 
 AuthButton.propTypes = {
