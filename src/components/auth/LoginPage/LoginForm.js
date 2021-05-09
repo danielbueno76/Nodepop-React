@@ -41,7 +41,12 @@ function LoginForm({ onSubmit, isLoading }) {
         value={password}
         onChange={handleChange}
       />
-      <Checkbox name="remember" label="remember" onChange={handleChecked} />
+      <Checkbox
+        name="remember"
+        label="remember"
+        value={isChecked}
+        onChange={handleChecked}
+      />
 
       <Button
         type="submit"
