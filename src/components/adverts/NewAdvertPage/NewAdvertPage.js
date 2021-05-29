@@ -12,6 +12,9 @@ const NewAdvertPage = (props) => {
     try {
       const formDataAdvert = new FormData();
       for (var key in newAdvert) {
+        if (key === "sale") {
+          newAdvert[key] = newAdvert[key] === SELL;
+        }
         formDataAdvert.append(key, newAdvert[key]);
       }
       const advert = await createAdvert(formDataAdvert);
